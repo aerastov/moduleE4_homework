@@ -29,7 +29,7 @@ class Lamp extends Electrodevices {
   getInfo() {
     console.log(`Параметры осветительного прибора ${this.name}`);
     for (let key in this) {
-      if (typeof this[key] !== "function"){
+      if (typeof this[key] !== "function") {
         console.log(`${key}: ${this[key]}`);
       }
     }

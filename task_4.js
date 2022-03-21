@@ -1,15 +1,15 @@
-function Electrodevices(name){ // родительская функция
+function Electrodevices(name) { // родительская функция
   this.voltage = 220;
   this.deviceTurned = false // по умолчанию при создании экземпляров они будут выключены
 }
-Electrodevices.prototype.deviceSwitch = function(deviceSwitch){ // метод для включения/выключения прибора
+Electrodevices.prototype.deviceSwitch = function(deviceSwitch) { // метод для включения/выключения прибора
   if (deviceSwitch === 'on') {
     this.deviceTurned = true;
   } else {
     this.deviceTurned = false;
   }
 }
-Electrodevices.prototype.energyConsumption = function(time){ // Считаем потребленную энергию и переводим в кВт
+Electrodevices.prototype.energyConsumption = function(time) { // Считаем потребленную энергию и переводим в кВт
   let сonsumption = this.devicePower * time * 0.01;
   console.log(`Электроприбор ${this.name} за время работы ${time} (час/часов) потратил ${сonsumption} кВт*ч `);
 }
@@ -22,11 +22,11 @@ function Lamp(name, amperage, luminous) { // подкласс конструкт
   this.devicePower = Math.round(this.voltage * amperage)
 }
 Lamp.prototype = new Electrodevices() // делегирующая связь подкласса
-Lamp.prototype.getInfo = function(){ // метод для вывода в консоль всех параметров прибора
+Lamp.prototype.getInfo = function() { // метод для вывода в консоль всех параметров прибора
   console.log(`Параметры осветительного прибора ${this.name}`);
   for (const key in this) {
-    if (typeof this[key] !== "function"){ // чтобы вместе с параметрами не выводил методы экземпляра
-      console.log(`${key}: ${this[key]}`)
+    if (typeof this[key] !== "function") { // чтобы вместе с параметрами не выводил методы экземпляра
+      console.log(`${key}: ${this[key]}`);
     }
   }
   console.log('\n'); // для читабельности данных в консоли
@@ -39,10 +39,10 @@ function Computing(name, amperage, size) { // подкласс конструк�
   this.devicePower = Math.round(this.voltage * amperage)
 }
 Computing.prototype = new Electrodevices(); // делегирующая связь подкласса
-Computing.prototype.getInfo = function(){ // метод для вывода в консоль всех параметров прибора
+Computing.prototype.getInfo = function() { // метод для вывода в консоль всех параметров прибора
   console.log(`Параметры компьютера ${this.name}`);
   for (const key in this) {
-    if (typeof this[key] !== "function"){ // чтобы вместе с параметрами не выводил методы экземпляра
+    if (typeof this[key] !== "function") { // чтобы вместе с параметрами не выводил методы экземпляра
       console.log(`${key}: ${this[key]}`);
     }
   }
